@@ -1,0 +1,36 @@
+#container{
+    margin-top: 5rem;
+    width: 50rem;
+}
+
+#form{
+    background-color: #3A4D39;
+    border-radius: 5px;
+    color: white;
+}
+
+#form input{
+    background: transparent;
+    color: white;
+}
+#form select{
+    background: transparent;
+    color: white;
+}
+#form select option{
+    background: hsl(117, 15%, 26%);
+    color: white;
+}
+#form input::placeholder{
+    color: rgb(225,225,225,0.9);
+}
+
+#form textarea{
+    background: transparent;
+    color: white; 
+}
+
+#submitbtn{
+    width: 10cap;
+    height: 4cap;
+}

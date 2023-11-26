@@ -1,0 +1,62 @@
+/*nav*/
+#nav{
+    height: 150px;
+    background-color: white;
+  }
+  #Logo{
+    margin-left: 100px;
+  }
+  #app{
+    margin-right: 20px;
+  }
+
+  #bookingLink{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-left: 15px;
+  }
+  
+  #dropdownLogin{
+    display: inline;
+    margin-left: 15px;
+    margin-right: 10ch;
+  }
+  #dropdownLogin a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  #updateRoom{
+    min-height: 18rem;
+  }
+  
+/*room select*/
+#roomImagediv img{
+    width: 300px;
+    border-radius: 5px;
+  }
+  #roomImagediv{
+    margin-left: 150px;
+    display: inline-block;
+  }
+
+  #roomdetaildiv{
+    margin-left: 50px;
+    display: inline-block;
+    width: 750px;
+  }
+
+  #rooms div a p img{
+    width: 30px;
+  }
+
+  #button{
+    background-color: #A9B388;
+  }
+  #button:hover{
+    background-color: #5F6F52;
+    color: #FEFAE0;
+  }

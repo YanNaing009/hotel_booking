@@ -1,0 +1,92 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Update</title>
+    <link rel="icon" th:href="@{/images/royalpalace-logo.jpg}" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="stylesheet" th:href="@{/admin/admin-update.css}">
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav class="navbar" id="nav">
+        <a href="/home" id="logo">
+          <img th:src="@{/images/royalpalace-logo.jpg}" alt="Royal Palace Logo" />
+        </a>
+  
+        <div id="app">
+          <a href="/home" id="bookingLink"  style="opacity: 0.9;">
+            <i class="bi bi-house"></i>
+            Home    
+          </a>
+          
+          <a th:href="@{'/admin/new'}" id="bookingLink" style="opacity: 0.9;"> Create Room </a>
+          <a th:href="@{'/orderRoom/checkOrder'}" id="bookingLink" style="opacity: 0.9;" class="position-relative">
+            Check Order
+            <span th:if="${isOrder == true}" class="position-absolute top-0 translate-middle p-2 bg-danger border border-light rounded-circle">
+				<span class="visually-hidden">New alerts</span>
+			</span>
+          </a>
+          <div class="dropdown" id="dropdownLogin">
+
+            <i class="bi bi-person-circle"></i>
+          <a
+            class="dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            th:text="${username}"
+          ></a>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li><a class="dropdown-item" th:href="@{'/client/logout'}">LogOut</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+     <div id="updateRoom">
+        <!--Room select start -->
+   
+    <div id="rooms" th:each="room : ${rooms}">
+		<hr>
+        <div class="shadow" id="roomImagediv">
+            <img th:src="@{'/image/room/' + ${room.id} + '/show'}" alt="Room">
+        </div>
+        <div id="roomdetaildiv">
+          <a>
+            <h3 th:text="${room.name}">Normal Deluxe Double</h3>
+            <p th:text="${room.information}+' | size '+${room.roomSize}+'㎡'">City View | size36.6㎡</p>
+            <p th:if="${room.bedType == 'Twin'}">Bed Type <img th:src="@{/images/twin-bed.png}" alt="BedType"> </p>
+            <p th:if="${room.bedType == 'Two Single'}">Bed Type <img th:src="@{/images/single.png}" alt="BedType"> <img th:src="@{/images/single.png}" alt="BedType"> </p>
+          </a>
+        </div>
+        <a class="btn  btn-lg" th:href="@{'/admin/'+${room.id}+'/update-form'}" id="button">Update Room</a>
+	
+    <!-- Room select end -->
+     </div>
+
+
+     <!-- Footer -->
+	<footer th:replace="~{common/footer :: footer}"></footer>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+</body>
+</html>

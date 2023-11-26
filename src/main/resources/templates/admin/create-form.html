@@ -1,0 +1,141 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="icon" th:href="@{/images/royalpalace-logo.jpg}" type="image/x-icon" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" th:href="@{/admin/update-form.css}">
+  </head>
+  <body>
+    <div class="container mb-5" id="container">
+        <form th:object="${room}" th:action="@{'/admin/update'}" enctype="multipart/form-data" method="post" class="row g-3 shadow" id="form">
+            
+            <h4 style="text-align: center; text-decoration: underline;">Room</h4>
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label"
+                >Room Type</label
+                >
+                <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Room Type"
+                required
+                th:field="*{name}"
+                />
+            </div>
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label"
+                >Infomation</label
+                >
+                <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Like City view , Lake view"
+                required
+                th:field="*{information}"
+                />
+            </div>
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label"
+                >Price</label
+                >
+                <input
+                type="number"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Price"
+                required
+                th:field="*{price}"
+                />
+            </div>
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label"
+                >Room Size</label
+                >
+                <input
+                type="text"
+                class="form-control"
+                id="exampleFormControlInput1"
+                placeholder="Room Size eg.36.6"
+                required
+                th:field="*{roomSize}"
+                />
+            </div>
+            <div class="mb-3 col-6">
+                <label for="exampleFormControlInput1" class="form-label"
+                >Bed Type</label
+                >
+                <select id="inputState" class="form-select" th:field="*{bedType}" required>
+                    <option value="Twin" selected>Twin</option>
+                    <option value="Two Single" >Single</option>
+                </select>
+            </div>
+            <hr>
+            <h4 style="text-align: center; text-decoration: underline; margin-top: -5px;">Amenities</h4>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                >General</label
+                >
+                <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                required
+                name="general"
+                ></textarea>
+            </div>
+            
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                >Bathroom</label
+                >
+                <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                required
+                name="bathRoom"
+                ></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="exampleFormControlTextarea1" class="form-label"
+                >Other</label
+                >
+                <textarea
+                class="form-control"
+                id="exampleFormControlTextarea1"
+                rows="3"
+                required
+                name="other"
+                ></textarea>
+            </div>
+
+            <hr>
+            <h4 style="text-align: center; text-decoration: underline; margin-top: -5px;">Image</h4>
+            <div class="mb-3 col-6">
+                <label class="form-label">Select Image File</label>
+                <input id="imagefile" name="imagefile" type="file" class="form-control" required>
+                 
+            </div>
+            <div class="col-12">
+                <button type="submit" class="btn btn-secondary float-end mb-2" id="submitbtn">Update</button>
+              </div>
+        </form>
+
+    </div>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

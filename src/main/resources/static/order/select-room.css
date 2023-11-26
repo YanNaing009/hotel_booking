@@ -1,0 +1,143 @@
+/*nav*/
+#nav{
+    height: 120px;
+  }
+  #Logo{
+    margin-left: 100px;
+  }
+  #app{
+    margin-right: 20px;
+  }
+  #bookingLink{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+
+  #dropdownLogin{
+    display: inline;
+    margin-left: 15px;
+  }
+  #dropdownLogin a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: medium;
+  }
+ /*Booking*/
+.flex {
+    display: flex;
+  }
+  
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 30px;
+  }
+  
+  .book {
+    width: 100%;
+    height: 22vh;
+    color: white;
+  }
+  
+  .book .input {
+    background: #b68602;
+    padding: 20px 20px 40px 20px;
+  }
+  
+  .book .search {
+    background: #4F4557;
+    padding: 0px 20px 0px 20px;
+  }
+  
+  input {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    background: whitesmoke;
+    margin-top: 20px;
+  }
+  
+  ::placeholder {
+    color: black;
+  }
+  
+  .book .search {
+    width: 15%;
+  }
+  
+  .book .search input {
+    background: rgb(57, 54, 70,0.7);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    font-weight: bold;
+    font-size: 20px;
+    color: whitesmoke;
+    margin-top: 40px;
+  }
+
+  .book .search input:hover{
+    background-color:rgb(57, 54, 70);
+  }
+
+  /*room select*/
+  #roomImagediv img{
+    width: 300px;
+  }
+  #roomImagediv{
+    margin-left: 150px;
+    display: inline-block;
+  }
+
+  #roomdetaildiv{
+    margin-left: 50px;
+    display: inline-block;
+    width: 750px;
+  }
+  #roomdetaildiv h3:hover{
+    text-decoration: underline;
+  }
+
+
+  #rooms div a{
+    cursor: pointer;
+  }
+
+  #rooms div a p img{
+    width: 30px;
+  }
+
+  #modalimagediv{
+    display: flex;
+    justify-content: center;
+  }
+
+  #modalimagediv img{
+    width: 700px;
+  }
+ 
+  #roomInfoText{
+    margin-left: 30px;
+  }
+
+  .roomInfoHeader{
+    display: inline-block;
+    width: 130px;
+    color: black;
+  }
+
+  .roomInfoDiv p{
+    display: inline-block;
+  }
+
+  #amenitiesBodyContent{
+    display: inline-block;
+    width: 600px;
+  }
+
+ #amenitiesHeader{
+  position: relative;
+  bottom: 150px;
+ }

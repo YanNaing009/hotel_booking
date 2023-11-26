@@ -1,0 +1,241 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Make Reservation</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
+    <link rel="icon" th:href="@{/images/royalpalace-logo.jpg}" type="image/x-icon" />
+    <link rel="stylesheet" th:href="@{/order/payment-page.css}">
+</head>
+<body>
+    <!-- Nav bar -->
+    <nav th:fragment="navbar" class="navbar" id="nav">
+      <a href="/home" id="logo">
+        <img th:src="@{/images/royalpalace-logo.jpg}" alt="Royal Palace Logo" />
+      </a>
+
+      <div id="app">
+        
+        <a href="#footer" id="bookingLink"> Contact Us </a>
+
+        <div th:if="${client != null}" class="dropdown" id="dropdownLogin">
+			<i class="bi bi-person-circle"></i>
+          <a
+            class="dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+            th:text="${username}"
+          >
+             
+          </a>
+          
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" th:href="@{'/client/logout'}">Logout</a></li>
+            <li th:if="${client.role == 'admin'}"><a class="dropdown-item" th:href="@{'/admin/admin-dashboard'}">Admin dashboard</a></li>
+          </ul>
+        </div>
+        <div th:if="${client == null}" class="dropdown" id="dropdownLogin">
+			<i class="bi bi-person-circle"></i>
+          <a
+            class="dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton1"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"      
+          >
+            Login 
+          </a>
+          
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" th:href="@{'/client/loginform'}">Login</a></li>
+            <li><a class="dropdown-item" th:href="@{'/client/signupform'}">Signup</a></li>
+          </ul>
+        </div>
+
+        <!-- Facebook -->
+        <a
+          class="btn text-white btn-floating"
+          href="https://www.facebook.com"
+          target="_blank"
+          role="button"
+        >
+          <i class="bi bi-facebook h4" style="color: #b68602"></i>
+        </a>
+
+        <!-- Instagram -->
+        <a
+          class="btn text-white btn-floating"
+          href="https://www.instagram.com"
+          target="_blank"
+          role="button"
+        >
+          <i class="bi bi-instagram h4" style="color: #b68602"></i>
+        </a>
+      </div>
+    </nav>
+    
+      <hr>
+      <div id="body">
+        <div>
+            <img th:src="@{'/image/room/' + ${room.id} + '/show'}" alt="">
+        </div>
+        <div id="selectedRoomInfo">
+            <div id="selectedRoomInfoInnerDiv">
+                <div id="selectedRoomInfoHadder">
+                    <h5>Hotels and rooms</h5>
+                    <h5>Date of stay</h5>
+                    <h5>Number of people</h5>
+                </div>
+                <div id="selectedRoomInfoP">
+                    <p><span style="font-weight: 500;">ROYALPALACE</span> HOTEL BAGAN, <span th:text="${room.name}"></span></p>
+                    <p><span th:text="${checkIn}"></span> - <span th:text="${checkOut}"></span> ( <span th:text="${night}"></span> Night(s) )</p>
+                    <p>Adults <span th:text="${orderRoom.adult}"></span>, Children <span th:text="${orderRoom.children}"></span></p>
+                </div>
+            </div>
+            <hr>
+
+            <div id="charge">
+                <p id="roomCharge">Room Charge <span>(<span th:text="${night}"></span> night(s) )</span><span id="roomChargeSpan" th:text="${roomCharge}+' MMK'"></span></p>
+                <p id="taxCharge">Tax and Service Charge <span th:text="${tax}+' MMK'"> </span></p>
+            </div>
+        </div>
+      </div>
+      <hr>
+      <div id="totalCharges">
+        <h4>Total Charges <span th:text="${total}+' MMK'"></span> </h4>
+      </div>
+      <hr>
+
+      
+        <div id="paymentDiv">
+          <form class="row g-3" th:action="@{'/orderRoom/'+${orderRoom.id}+'/'+${room.id}+'/finish'}" method="post">
+            <p style="margin-bottom: -10px;">Name in English *</p>
+              <div class="col-md-4 mb-4" th:if="${client == null}">
+                <input type="text" class="form-control" id="inputFirstname" name="firstName" placeholder="Firstname" required>
+              </div>
+              <div class="col-md-4 mb-4" th:if="${client != null}">
+                <input th:value="${client.firstName}" type="text" class="form-control" name="firstName" id="inputFirstname" placeholder="Firstname" required>
+              </div>
+             
+              <div class="col-md-4" th:if="${client == null}")>
+                <input type="text" class="form-control" id="inputPassword4" name="lastName" placeholder="Lastname" required>
+              </div>
+              <div class="col-md-4" th:if="${client != null}")>
+                <input th:value="${client.lastName}" type="text" class="form-control" name="lastName" id="inputPassword4" placeholder="Lastname" required>
+              </div>
+
+              <hr  th:if="${clientId == 0}">
+              <p th:if="${clientId == 0}" style="margin-bottom: -10px;" class="text-Info">If you don't have account please Register here.</p>
+              <p th:if="${checkEmail == 0}"  class="text-danger">Email is already have an account. Try another one</p>	
+              <div class="col-md-4 mb-4" th:if="${clientId == 0}">
+                <label for="inputEmail4" class="form-label">Email</label>
+                <input type="email" class="form-control" id="inputEmail4" name="email" placeholder="Email" required>
+              </div>
+              <div class="col-md-4" th:if="${clientId == 0}">
+                <label for="inputPassword4" class="form-label">Password</label>
+                <input type="password" class="form-control" id="inputPassword4" name="password" placeholder="Password" required>
+              </div>
+
+              <hr>
+              <h6>Contact*</h6>
+              <div class="col-2">
+                <select class="form-select">
+                  <option selected>Moblie Phone</option>
+                  <option >Home</option>
+                  <option >Work</option>
+                </select>
+              </div>
+              <div class="col-3" th:if="${client == null}">
+                <select class="form-select">
+                  <option selected>Select Country Code</option>
+                  <option >Myanmar(95)</option>
+                </select>
+              </div>
+              <div class="col-3" th:if="${client != null}">
+				  <select class="form-select" th:if="${client.contact == null}">
+                  <option selected>Select Country Code</option>
+                  <option >Myanmar(95)</option>
+                </select>
+                <select class="form-select" th:if="${client.contact != null}">
+                  <option >Select Country Code</option>
+                  <option selected>Myanmar(95)</option>
+                </select>
+              </div>
+              <div class="col-3 mb-4" th:if="${client == null}">
+                <input type="text" class="form-control" name="contact" placeholder="Contact Number" required>
+              </div>
+              <div class="col-3 mb-4" th:if="${client != null}">
+                <input th:value="${client.contact}" type="text" class="form-control" name="contact" placeholder="Contact Number" required>
+              </div>
+              
+
+              <hr>
+
+              <h4>Credit Card Information</h4>
+              <p>Credit card details are used for guarantee/penalty payments; you will be asked to pay <br> for your room(s) when you check in.</p>
+              <input type="hidden" th:if="${creditCardInfo != 0}" th:value="${creditCardInfo.id}" name="id">
+              <div class="col-3">
+                <label class="form-label" for="creditCardNum">Credit Card Number*</label>
+                  <input th:if="${creditCardInfo == 0}" type="text" class="form-control" id="creditCardNum" minlength="16" maxlength="16" name="cardNo" placeholder=" 0000-0000-0000-0000">
+                  <input th:if="${creditCardInfo != 0}" th:value="${creditCardInfo.cardNo}" type="text" class="form-control" id="creditCardNum" minlength="16" maxlength="16" name="cardNo" placeholder=" 0000-0000-0000-0000">
+              </div>
+              <div class="col-2">
+                <label class="form-label"  for="expirationDate">Expiration Date*</label>
+                <input th:if="${creditCardInfo == 0}" type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/YY">
+                <input th:if="${creditCardInfo != 0}" th:value="${creditCardInfo.expirationDate}" type="text" class="form-control" id="expirationDate" name="expirationDate" placeholder="MM/YY">
+              </div>
+              
+              <div class="col-3 mb-4">
+                <label class="form-label" for="autoSizingSelect">Card Type*</label>
+               <select th:if="${creditCardInfo == 0}" class="form-select" id="autoSizingSelect" name="cardType">
+                  <option 
+                  	th:each="cardTypeValue : ${T(com.hostmdy.hotel.domain.Card).values()}"
+                  	th:value="${cardTypeValue.name()}"
+                  	th:text="${cardTypeValue.name()}"
+                  	></option>
+                  
+                </select>
+                <select th:if="${creditCardInfo != 0}" class="form-select" id="autoSizingSelect" name="cardType">
+                  <option 
+                  	th:each="cardTypeValue : ${T(com.hostmdy.hotel.domain.Card).values()}"
+                  	th:value="${cardTypeValue.name()}"
+                  	th:text="${cardTypeValue.name()}"
+                  	th:selected="${cardTypeValue.name() == creditCardInfo.cardType.name()}"
+                  	></option>
+                  
+                </select>
+              </div>
+            
+              <div class="col-8">
+                <button type="submit" class="btn btn-primary float-end">Complete Reservation</button>
+              </div>
+            </form>
+        </div>
+      
+    
+
+      <!-- Footer -->
+	<footer th:replace="~{common/footer :: footer}"></footer>
+  
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"
+      ></script>
+</body>
+</html>

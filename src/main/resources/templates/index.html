@@ -1,0 +1,93 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Royal Palace Hotel</title>
+    <link rel="icon" href="./images/royalpalace-logo.jpg" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="index.css">
+
+</head>
+<body>
+      <!-- Nav bar -->
+      <nav th:replace="~{common/navbar :: navbar}"></nav>
+      
+      <div id="background"></div>
+      
+      <form th:action="@{'/orderRoom/add'}" method="post">
+        <section class="book" id="booking">
+			
+            <div class="container flex">
+				<input th:if="${client != null}" type="hidden" th:value="${client.id}" name="clientId">
+				<input th:if="${client == null}" type="hidden" name="clientId" value="0">
+					 
+	              <div class="input grid shadow">
+	                <div class="box" id="date">
+	                  <label for="checkIn">Check-in:</label>
+	                  <input type="date" placeholder="Check-in-Date" th:min="${date}" name="checkIn" required>
+	                </div>
+	                <div class="box" id="date">
+	                  <label for="checkOut">Check-out:</label>
+	                  <input type="date" placeholder="Check-out-Date" th:min="${nextdate}" name="checkOut" required>
+	                </div>
+	               
+	                <div class="box">
+	                  <label for="adult">Adults:</label> <br>
+	                  <input type="number" placeholder="0" max="2" min="0" value="1" name="adult" required>
+	                </div>
+	                <div class="box">
+	                  <label for="children">Children:</label> <br>
+	                  <input type="number" placeholder="0" max="2" min="0" name="children">
+	                </div>
+	              </div>
+	              <div class="search shadow">
+	                <input type="submit" value="Book Now">
+	              </div>
+              
+            </div>
+          </section>
+          </form>
+
+          <div id="bodyContent">
+            <p>Everything has been designed with business travelers in mind. <br>
+             With modern services and rooms, business travel will be more comfortable than ever before. <br>
+            LOTTE City Hotels will always be available to guests so that all aspects of the hotel are convenient, accessible, and stress-free.</p>
+            <br>
+            <hr>
+            <h3>Modern convenience and design for balanced travel</h3>
+            <br>
+            <p>
+              Perfect hospitality delivers utmost convenience throughout efficient modern facilities. <br>
+              LOTTE City Hotels offer practical, functional spaces and services for that essential blend of work and relaxation.
+            </p>
+            <br>
+
+            <div class="container flex grid" id="image">
+              <div>
+                <img src="./images/for-body-content.jpg" alt="">
+                <h3>Idel Hotel for Business Traveler</h3>
+                <p>Our hotel offers guests well-being at the best price. It is designed for the modern business traveler seeking personal fulfillment and professional growth.</p>
+              </div>
+              <div>
+                <img src="./images/for-body-content-2.jpg" alt="">
+                <h3>Efficient, Convenient</h3>
+                <p>LOTTE City Hotels always provide necessary services and practical facilities that deliver both convenience and satisfaction.</p>
+              </div>
+              <div>
+                <img src="./images/for-body-content-3.jpg" alt="">
+                <h3>Brand Features</h3>
+                <p>
+                  · Well equipped room for sound sleep : he:on bedding, pillow service <br>
+                  · A stress-free business travel : Free wifi, Digital devices rental service
+                </p>
+              </div>
+            </div>
+          </div>
+          
+       <footer th:replace="~{common/footer :: footer}"></footer>
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+</body>
+</html>

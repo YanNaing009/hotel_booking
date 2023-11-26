@@ -1,0 +1,102 @@
+/*nav*/
+#nav{
+    height: 120px;
+  }
+  #Logo{
+    margin-left: 100px;
+  }
+  #app{
+    margin-right: 20px;
+  }
+  #bookingLink{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-left: 20px;
+  }
+
+  #dropdownLogin{
+    display: inline;
+    margin-left: 15px;
+  }
+  #dropdownLogin a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  /* body */
+  #body{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+  #body img{
+    width: 500px;
+
+    margin-right: 50px;
+    border-radius: 5px;
+  }
+
+  #selectedRoomInfo{
+    display: inline-block;
+    height: 20rem;
+  }
+  #selectedRoomInfoInnerDiv{
+    margin-top: 20px;
+  }
+  #selectedRoomInfoHadder{
+    display: inline-block;
+    width: 200px;
+    position: relative;
+    bottom: 5px;
+  }
+  #selectedRoomInfoHadder h5:first-child{
+    position: relative;
+    bottom: 6px;
+  }
+  #selectedRoomInfoHadder h5:last-child{
+    position: relative;
+    top: 7px;
+  }
+ 
+  #selectedRoomInfoHadder h5{
+    margin-top: 10px;
+  }
+ 
+  #selectedRoomInfoP{
+    display: inline-block;
+  }
+
+  
+  #roomCharge span:first-child{
+    color: #b68602;
+  }
+  #roomChargeSpan{
+    margin-left: 24ch;
+  }
+  #taxCharge span{
+    margin-left: 26ch;
+  }
+  #charge{
+    margin-top: 50px;
+  }
+
+  #totalCharges h4{
+    margin-left: 40rem;
+  }
+  #totalCharges span{
+    margin-left: 25ch;
+  }
+
+  /* payment */
+
+  #paymentDiv {
+    /* background-color: aqua; */
+    width: 70rem;
+    margin: 50px 0 0 12rem;
+  }
+
+  
+  

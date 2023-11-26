@@ -1,0 +1,51 @@
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>log-in page</title>
+    <link rel="stylesheet" th:href="@{/login/login.css}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+
+    <a href="/home">
+        <div class="logoimg">
+            <img src="../images/royalpalace-logo.jpg" alt="logo">
+        </div>
+    </a>
+
+    <div class="wrapper">
+        <form th:action="@{/client/signup}" method="post">
+			<h4 th:if="${existUser}">Email is already exist</h4>
+            <h2>Signup</h2>
+            <div class="input-box">
+                <input type="text" placeholder="Fristname" name="firstName" required>
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="text" placeholder="Lastname" name="lastName" required>
+                <i class="fa-solid fa-user"></i>
+            </div>
+            <div class="input-box">
+                <input type="email" placeholder="Email" name="email" required>
+                <i class="fa-regular fa-envelope"></i>
+            </div>
+
+            <div class="input-box">
+                <input type="password" placeholder="Password" name="password" required>
+                <i class="fa-solid fa-lock"></i>
+            </div>
+            
+            <button type="submit" class="btn">Signup</button>
+
+            <div class="register-link">
+                <p>
+                    Already have an account?
+                    <a th:href="@{'/client/loginform'}">Login</a></p>
+            </div>
+
+        </form>
+    </div>
+    
+</body>
+</html>

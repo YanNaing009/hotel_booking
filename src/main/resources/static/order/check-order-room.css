@@ -1,0 +1,32 @@
+/*nav*/
+#nav{
+    height: 150px;
+  }
+  #Logo{
+    margin-left: 100px;
+  }
+  #app{
+    margin-right: 20px;
+  }
+
+  #bookingLink{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+    margin-left: 15px;
+  }
+  
+  #dropdownLogin{
+    display: inline;
+    margin-left: 15px;
+  }
+  #dropdownLogin a{
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    font-size: medium;
+  }
+
+  #tableContainer{
+    min-height: 18rem;
+  }
